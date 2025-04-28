@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Members!</title> 
+    <title>Members!</title>
     <style>
         body {
             margin: 0;
@@ -15,38 +16,117 @@
             background-repeat: no-repeat;
             display: flex;
             justify-content: center;
-            align-items: flex-end;
-        } 
-        #patrick-image {
-            max-width: 50%;
-            max-height: 50%;
-            z-index: 10;
-            }
-        #josie-image {
-            max-width: 50%;
-            max-height: 50%;
-            z-index: 15;
-            }
-        #dip-image {
-            max-width: 50%;
-            max-height: 50%;
-            z-index: 20;
-            }
-        #pip-image {
-            max-width: 50%;
-            max-height: 50%;
-            z-index: 25;
-            }
+            align-items: center;
+            position: relative;
+        }
+
+        img {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        #patrick-image,
+        #josie-image,
+        #dip-image,
+        #pip-image,
         #tink-image {
-            max-width: 50%;
-            max-height: 50%;
-            z-index: 30;
+            max-width: 60%;
+            max-height: 60%;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Popup styling */
+        #popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        #popup-container img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        #popup-container .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            z-index: 101;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img id="patrick-image" src="image/pat.png" alt="Patrick">
+    <img id="josie-image" src="image/josie.png" alt="Josie">
+    <img id="dip-image" src="image/dip.png" alt="Dip">
+    <img id="pip-image" src="image/pip.png" alt="Pip">
+    <img id="tink-image" src="image/tink.png" alt="Tink">
+
+    <!-- Popup container (initially hidden) -->
+    <div id="popup-container">
+        <span class="close-btn" id="close-popup">&times;</span>
+        <img id="popup-image" src="" alt="Popup Image">
+    </div>
+
+    <script>
+        // Get references
+        const popupContainer = document.getElementById('popup-container');
+        const popupImage = document.getElementById('popup-image');
+        const closePopup = document.getElementById('close-popup');
+
+        // Define a function to open the popup with the correct image
+        function openPopup(imageSrc) {
+            popupImage.src = imageSrc;
+            popupContainer.style.display = 'flex';
+        }
+
+        // Set up event listeners
+        document.getElementById('patrick-image').addEventListener('click', function () {
+            openPopup('image/patrickfacts.jpg');
+        });
+
+        document.getElementById('josie-image').addEventListener('click', function () {
+            openPopup('image/josiefacts.jpg');
+        });
+
+        document.getElementById('dip-image').addEventListener('click', function () {
+            openPopup('image/dipfacts.jpg');
+        });
+
+        document.getElementById('pip-image').addEventListener('click', function () {
+            openPopup('image/pipfacts.jpg');
+        });
+
+        document.getElementById('tink-image').addEventListener('click', function () {
+            openPopup('image/tinkfacts.jpg');
+        });
+
+        // Close popup
+        closePopup.addEventListener('click', function () {
+            popupContainer.style.display = 'none';
+        });
+
+        // Also close if clicking outside the image
+        popupContainer.addEventListener('click', function (e) {
+            if (e.target === popupContainer) {
+                popupContainer.style.display = 'none';
             }
-        </style>
-    <body>
-        <img id="patrick-image" src="image/pat.png" alt="Patrick">
-        <img id="josie-image" src="image/josie.png" alt="Josie">
-        <img id="dip-image" src="image/dip.png" alt="Dip">
-        <img id="pip-image" src="image/pip.png" alt="Pip">
-        <img id="tink-image" src="image/tink.png" alt="Tink">
-        </body>
+        });
+    </script>
+
+</body>
+
+</html>
