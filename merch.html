@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merch!</title> 
+    <title>Merch!</title>
     <style>
         body {
             margin: 0;
@@ -14,27 +15,44 @@
             background-position: center;
             background-repeat: no-repeat;
             display: flex;
-            justify-content: center;
-            align-items: flex-end;
-        } 
-        #shirt-image {
-            max-width: 50%;
-            max-height: 50%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        #coming-soon-text {
+            font-size: 4rem;
+            font-weight: bold;
+            color: rgb(255, 0, 136);
+            text-shadow: 2px 2px 8px rgb(47, 0, 51);
+            z-index: 100;
+            margin-top: 20px;
+        }
+
+        .merch-images {
+            display: flex;
+            gap: 30px;
             z-index: 10;
-            }
-        #cd1-image {
+            margin-bottom: 20px;
+        }
+
+        .merch-images img {
             max-width: 50%;
-            max-height: 50%;
-            z-index: 15;
-            }
-        #cd2-image {
-            max-width: 50%;
-            max-height: 50%;
-            z-index: 20;
-            }
-        </style>
-    <body>
+            max-height: 55%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="coming-soon-text">COMING SOON!</div>
+
+    <div class="merch-images">
         <img id="shirt-image" src="image/shirt.png" alt="shirt">
         <img id="cd1-image" src="image/cd1.png" alt="cd1">
         <img id="cd2-image" src="image/cd2.png" alt="cd2">
-        </body>
+    </div>
+</body>
+
+</html>
